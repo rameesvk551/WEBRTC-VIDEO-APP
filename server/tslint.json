@@ -1,0 +1,25 @@
+{
+    "defaultSeverity": "error",
+    "extends": [
+        "tslint:recommended"
+    ],
+    "rules": {
+        "no-console": false,
+        "curly": true,
+        "no-var-requires": true,
+        "quotemark": [true, "single"],
+        "semicolon": [true, "always"],
+        "trailing-comma": [true, {
+            "multiline": "always",
+            "singleline": "never"
+        }],
+        "interface-name": [true, "never-prefix"],
+        "member-access": [true, "no-public"],
+        "no-empty-interface": true,
+        "strict-type-predicates": true,
+        "no-floating-promises": true,
+        "arrow-parens": [true, "ban-single-arg-parens"],
+        "indent": [true, "spaces", 4],
+        "max-line-length": [true, 120]
+    }
+}
