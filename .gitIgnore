@@ -1,21 +1,19 @@
 # Node modules
 node_modules/
 
-# Node modules
-node_modules/
-
-# Build artifacts
-dist/
-build/
+# Compiled files
 *.js
 *.js.map
 *.d.ts
-*.d.ts.map
 
 # TypeScript cache
 *.tsbuildinfo
 
-# Environment files
+# Build artifacts
+dist/
+build/
+
+# Environment variables
 .env
 .env.* 
 
@@ -25,16 +23,3 @@ logs/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-# OS-specific files
-.DS_Store
-Thumbs.db
-
-# IDE and editor settings
-.vscode/
-.idea/
-
-# Misc
-*.bak
-*.swp
-*.swo
