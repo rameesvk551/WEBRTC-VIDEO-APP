@@ -1,13 +1,14 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.tsx'
-import { SocketProvider } from './context/SocketContext.tsx'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
+import App from './App';
+import { SocketProvider } from './context/SocketContext';
 
-createRoot(document.getElementById('root')!).render(
-<SocketProvider>
-<App />
-</SocketProvider>
-  
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <BrowserRouter>
+    <SocketProvider>
+      <App />
+    </SocketProvider>
+  </BrowserRouter>
+);
 
-)
