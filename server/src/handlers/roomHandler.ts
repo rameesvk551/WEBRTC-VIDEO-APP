@@ -1,14 +1,10 @@
-import { log } from "console";
 import { Socket } from "socket.io";
 import {v4 as UUIDV4} from 'uuid'
 import IRoomParams from "../interfaces/IroomParams";
-
 const rooms:Record<string,string[]>={}
-
-
 const roomHandler =(socket:Socket)=>{
-    const createRoom=()=>{
-        const roomId=UUIDV4()//create room id in witch multiple connection exchage data
+const createRoom=()=>{
+ const roomId=UUIDV4()//create room id in wich multiple connection exchage data
 socket.join(roomId)// we will make the socket connection enter a new room
 rooms[roomId] = []
 socket.emit("room-created",{roomId})// we will emit an event from server side that socket connection has been added to a room
@@ -18,13 +14,17 @@ socket.emit("room-created",{roomId})// we will emit an event from server side th
 
 
     const joinedRoom =({roomId,peerId}:IRoomParams)=>{
-        console.log("new uer joined home",roomId,"user id",peerId);
+        console.log("new user joined home ",roomId," user id ",peerId);
         if(rooms[roomId]){
             //if the given room id exist in memmery db
-            console.log("ne member joined in room id : ",  roomId, "with peerId as :",peerId)
+            console.log("new member joined in room id : ",  roomId, "with peerId as :",peerId)
             rooms[roomId].push(peerId)
             socket.join(roomId) // make  the user to join the socket room
-
+socket.on("ready",()=>{
+    //from the frontend once someone  join the room we will emit an ready event
+    // then from our server we will emit an event to  all clients that new peer has added
+    socket.to(roomId).emit("user-joined",{peerId})
+})
 
             socket.emit("get-users",{roomId,patrticipants:rooms[roomId]})
 
