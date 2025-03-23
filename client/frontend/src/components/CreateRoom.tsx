@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { SocketContext } from "../context/SocketContext";
 
 const CreateRoom: React.FC = () => {
-    const socket = useContext(SocketContext); // No destructuring
+    const {socket} = useContext(SocketContext); // No destructuring
 
     const createRoom = () => {
         console.log("creating rooom",socket);
